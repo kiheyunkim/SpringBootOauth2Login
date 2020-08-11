@@ -41,6 +41,6 @@ public class CustomOauth2UserService implements OAuth2UserService<OAuth2UserRequ
         System.out.println(oAuth2User.getAttributes());
         System.out.println("5678");
 
-        return new DefaultOAuth2User((Collections.singleton(new SimpleGrantedAuthority("ADMIN"))), oAuth2User.getAttributes() ,"name");
+        return new DefaultOAuth2User((Collections.singleton(new SimpleGrantedAuthority("USER"))), oAuth2User.getAttributes() ,"name");
     }
 }

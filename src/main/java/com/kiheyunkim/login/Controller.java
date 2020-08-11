@@ -15,11 +15,11 @@ public class Controller {
         return "1234567890";
     }
 
-    /*@GetMapping("/login")
+    @GetMapping("/login")
     public ModelAndView getLoginPage(ModelAndView model){
         model.setViewName("login");
         model.addObject("hi","Login Test");
 
         return model;
-    }*/
+    }
 }

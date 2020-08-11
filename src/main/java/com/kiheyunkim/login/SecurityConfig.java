@@ -7,7 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-//@EnableWebSecurity // 1
+@EnableWebSecurity // 1
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -20,14 +20,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
+        http.httpBasic().disable();
+
         http.csrf();
 
         http
                     .authorizeRequests()
                     .antMatchers("/", "/service", "/resources/**","/login","/login/oauth2/code/google").permitAll()
                     .antMatchers("/board").hasRole("ADMIN")
-                    .anyRequest().authenticated()
-                .and()
+                    .anyRequest().authenticated();
+
+       http
                     .oauth2Login()
                     .userInfoEndpoint()
                     .userService(customOauth2UserService);
