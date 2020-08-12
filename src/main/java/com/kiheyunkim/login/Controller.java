@@ -10,6 +10,7 @@ public class Controller {
     public String getMain(){
         return "12345";
     }
+
     @GetMapping("/board")
     public String getBn(){
         return "1234567890";

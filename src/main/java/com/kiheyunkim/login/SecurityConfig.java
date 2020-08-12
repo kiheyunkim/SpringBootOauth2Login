@@ -25,15 +25,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf();
 
         http
+                    //
                     .authorizeRequests()
-                    .antMatchers("/", "/service", "/resources/**","/login","/login/oauth2/code/google").permitAll()
+                    .antMatchers("/", "/service", "/resources/**","/login","/login/oauth2/code/google").anonymous().and()
+                    .authorizeRequests().antMatchers("/", "/service", "/resources/**","/login","/login/oauth2/code/google").permitAll()
                     .antMatchers("/board").hasRole("ADMIN")
                     .anyRequest().authenticated();
 
-       http
+       /*http
                     .oauth2Login()
                     .userInfoEndpoint()
-                    .userService(customOauth2UserService);
+                    .userService(customOauth2UserService);*/
                 /*.and()
                     .formLogin() // 8
                     .loginPage("/login") // 로그인 페이지 링크
